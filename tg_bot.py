@@ -28,7 +28,7 @@ async def process_start_command(message: types.Message):
 async def process_help_command(message: types.Message):
     await message.reply("Вот что я пока что умею:\n/randomWord - назову какое-нибудь животное"
                         "\n/joke - расскажу шутку\n/guessInt - загадаю тебе число, а ты попрробуешь"
-                        " отгадать\nИ не смей называть меня пидором!!!")
+                        " отгадать")
 
 @dp.message_handler(commands=['randomWord'])
 async def process_random_word_command(message: types.Message):
@@ -42,20 +42,6 @@ async def process_random_joke_command(message: types.Message):
 @dp.message_handler(commands=['guessInt'])
 async def process_guess_int_command(message: types.Message):
     await message.reply('Ладно, этого пока не умею')
-
-
-@dp.message_handler(content_types="text")
-async def echo_message(msg: types.Message):
-    if (msg.text == 'пидор') or (msg.text == 'ты пидор'):
-        await msg.reply('ты чё, охуел?')
-        await bot.send_message(msg.from_user.id, 'сам ты пидор')
-
-
-@dp.message_handler(content_types="text")
-async def echo_message(msg: types.Message):
-    if msg.text == 'урод':
-        await msg.reply('ты чё, охуел?')
-        await bot.send_message(msg.from_user.id, 'сам ты пидор')
 
 
 @dp.message_handler(content_types="text")
